@@ -42,9 +42,9 @@ npm run ios
 yarn ios
 ```
 
-<img src = "src/screenshots/Screenshot_20240104_044724_FoodUI.jpg" height="500">
-<img src = "src/screenshots/Screenshot_20240104_044730_FoodUI.jpg" height="500">
-<img src = "src/screenshots/Screenshot_20240104_044745_FoodUI.jpg" height="500">
+<img src = "src/screenshots/Screenshot_20240104_044724_FoodUI.jpg" height="500" width="400">
+<img src = "src/screenshots/Screenshot_20240104_044730_FoodUI.jpg" height="500" width="400">
+<img src = "src/screenshots/Screenshot_20240104_044745_FoodUI.jpg" height="500" width="400">
 
 ## dependency
 - react-native-app-intro-slider  <br/>
