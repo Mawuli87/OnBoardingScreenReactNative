@@ -56,3 +56,4 @@ yarn ios
 * VS Code
 * Android version: 13
 * SDK version: 34
+* React Native CLI
