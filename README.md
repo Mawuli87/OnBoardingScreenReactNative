@@ -1,5 +1,5 @@
 This is a new [**React Native CLI project**]
-If you like then give it a star. <br/>
+# If you like then give it a star. <br/>
 # Getting Started
 
 >**Note**: Make sure you have completed the [React Native cli  - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
@@ -42,9 +42,9 @@ npm run ios
 yarn ios
 ```
 
-<img src = "screenshots/Screenshot_20240104_044724_FoodUI.jpg" height="500">
-<img src = "screenshots/Screenshot_20240104_044730_FoodUI.jpg" height="500">
-<img src = "screenshots/Screenshot_20240104_044745_FoodUI.jpg" height="500">
+<img src = "src/screenshots/Screenshot_20240104_044724_FoodUI.jpg" height="500">
+<img src = "src/screenshots/Screenshot_20240104_044730_FoodUI.jpg" height="500">
+<img src = "src/screenshots/Screenshot_20240104_044745_FoodUI.jpg" height="500">
 
 ## dependency
 - react-native-app-intro-slider  <br/>
