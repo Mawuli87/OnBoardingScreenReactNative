@@ -1,118 +1,109 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
+import React, { useState } from 'react';
+import { View, Text, Image } from 'react-native';
+import AppIntroSlider from 'react-native-app-intro-slider';
+import { COLORS, SIZES } from './src/constants/theme';
 
-import React from 'react';
-import type {PropsWithChildren} from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+const slides = [
+  {
+    id: 1,
+    title: 'Discover Best Places',
+    description: '“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat"',
+    image: require('./src/assets/onboardScreen1.png')
+  },
+  {
+    id: 2,
+    title: 'Choose A Tasty Dish',
+    description: '“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat"',
+    image: require('./src/assets/onboardScreen2.png')
+  },
+  {
+    id: 3,
+    title: 'Pick Up The Delivery',
+    description: '“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat"',
+    image: require('./src/assets/onboardScreen3.png')
+  }
+]
 
-type SectionProps = PropsWithChildren<{
-  title: string;
-}>;
 
-function Section({children, title}: SectionProps): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-  return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
-  );
-}
+export default function App() {
+  const [showHomePage, setShowHomePage] = useState(false);
 
-function App(): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
+  const buttonLabel = (label:string) => {
+    return(
+      <View style={{
+        padding: 12
+      }}>
+        <Text style={{
+          color: COLORS.title,
+          fontWeight: '600',
+          fontSize: SIZES.h4,
+        }}>
+          {label}
+        </Text>
+      </View>
+    )
+  }
 
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-
-  return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
+     if(!showHomePage){
+      return (
+       
+        <AppIntroSlider
+        data={slides}
+        renderItem={({item}) => {
+          return(
+            <View style={{
+              flex: 1,
+              alignItems: 'center',
+              padding: 15,
+              paddingTop: 100,
+            }}>
+              <Image
+                source={item.image}
+                style={{
+                  width: SIZES.width - 80,
+                  height: 400,
+                }}
+                resizeMode="contain"
+              />
+              <Text style={{
+                fontWeight: 'bold',
+                color: COLORS.title,
+                fontSize: SIZES.h1,
+              }}>
+                {item.title}
+              </Text>
+              <Text style={{
+                textAlign: 'center',
+                paddingTop: 5,
+                color: COLORS.title
+              }}>
+                {item.description}
+              </Text>
+            </View>
+          )
+        }}
+        activeDotStyle={{
+          backgroundColor: COLORS.primary,
+          width: 30,
+        }}
+        showSkipButton
+        renderNextButton={() => buttonLabel("Next")}
+        renderSkipButton={() => buttonLabel("Skip")}
+        renderDoneButton={() => buttonLabel("Done")}
+        onDone={() => {
+          setShowHomePage(true);
+        }}
       />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
-    </SafeAreaView>
-  );
+    )
+     
+     }
+  
+  return (
+    <View style={{ flex:1,justifyContent:'center',alignItems:'center', }}>
+      <Text>Home Screen</Text>
+    </View>
+  )
 }
 
-const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-});
 
-export default App;
